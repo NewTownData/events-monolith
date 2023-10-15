@@ -34,3 +34,6 @@ jobs:
         env:
           STACK_PREFIX: "demo"
         run: cdk synth
+      - name: Run app locally
+        working-directory: app
+        run: mvn exec:java "-Dexec.args=example-event.json"
