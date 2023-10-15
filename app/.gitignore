@@ -1,0 +1,21 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+bin
+
+# Eclipse
+.project
+.classpath
+.settings
+
+.idea
+
+target/
+.vscode
+
+/temp*.html
+
+/temp/*
+!/temp/readme.txt

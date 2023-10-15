@@ -1,0 +1,8 @@
+{
+  "id": "a6145dee-69f9-11ee-998a-00155d00fec5",
+  "traceId": "a6145dee-69f9-11ee-998a-00155d00fec5",
+  "ttl": 10,
+  "sourceState": "start",
+  "targetState": "hello:input",
+  "attributes": {}
+}
