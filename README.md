@@ -1,5 +1,7 @@
 # Events Monolith
 
+Description of the architecture is at https://www.newtowndata.com/blog/2023-10/monolithic-event-based-system-blueprint.html
+
 ## Pre-requisites
 
 - [Java 17](https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html)
