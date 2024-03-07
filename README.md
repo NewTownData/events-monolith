@@ -26,6 +26,10 @@ Description of the architecture is at https://www.newtowndata.com/blog/2023-10/m
 1. Send a new message to the SQS queue with name ending on `events-monolith-app-queue`. An example event is at `app/test-event.json`.
 1. Observe the execution in CloudWatch logs or AWS X-ray traces.
 
+## CDK clean up
+
+This project contains [CDK clean up](infrastructure/docs/clean-up.md) code that can be used for cleaning up unused CDK assets in a staging bucket.
+
 ## License
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for more details.
