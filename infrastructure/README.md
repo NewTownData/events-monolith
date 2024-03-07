@@ -24,3 +24,5 @@ You can clean up unused CDK assets after successful deployment by running the fo
 ```bash
 mvn compile exec:java@clean-up
 ```
+
+Description of how clean up works is at [docs/clean-up.md](docs/clean-up.md).
