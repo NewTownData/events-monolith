@@ -12,17 +12,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Node.js v18 LTS
+      - name: Set up Node.js v20 LTS
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: "17"
       - name: Install AWS CDK
-        run: npm install -g aws-cdk@2.101.0
+        run: npm install -g aws-cdk@2.131.0
       - name: Build app
         working-directory: app
         run: mvn -B package
