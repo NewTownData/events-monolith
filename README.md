@@ -6,7 +6,7 @@ Description of the architecture is at https://www.newtowndata.com/blog/2023-10/m
 
 - [Java 17](https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html)
 - [Apache Maven](https://maven.apache.org/install.html)
-- [Node.js v18 LTS](https://maven.apache.org/install.html)
+- [Node.js LTS](https://nodejs.org/en/download/)
 - [AWS CDK v2](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html#getting_started_install)
 - AWS account that you can deploy to
 
