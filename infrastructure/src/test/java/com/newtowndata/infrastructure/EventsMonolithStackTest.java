@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Voyta Krizek, https://github.com/NewTownData
+ * Copyright 2023-2024 Voyta Krizek, https://github.com/NewTownData
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -26,8 +26,9 @@ public class EventsMonolithStackTest {
   @Test
   public void testStack() {
     App app = new App();
-    EventsMonolithStack stack = new EventsMonolithStack(app, "events-monolith-stack",
-        StackProps.builder().build(), new EventsMonolithStackProps("test"));
+    EventsMonolithStack stack = new EventsMonolithStack(app,
+        new EventsMonolithStackProps("test", StackProps.builder().build())
+    );
 
     Template template = Template.fromStack(stack);
     template.hasResourceProperties("AWS::SQS::Queue",

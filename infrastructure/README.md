@@ -16,3 +16,11 @@ It is a [Maven](https://maven.apache.org/) based project, so you can open this p
 - `cdk docs` open CDK documentation
 
 Enjoy!
+
+## CDK Clean Up
+
+You can clean up unused CDK assets after successful deployment by running the following command:
+
+```bash
+mvn compile exec:java@clean-up
+```

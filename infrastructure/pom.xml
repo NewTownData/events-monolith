@@ -10,9 +10,11 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <cdk.version>2.101.0</cdk.version>
-    <constructs.version>[10.0.0,11.0.0)</constructs.version>
-    <junit.version>5.7.1</junit.version>
+    <cdk.version>2.131.0</cdk.version>
+    <constructs.version>10.3.0</constructs.version>
+    <junit.version>5.10.2</junit.version>
+    <root.aws-sdk.version>2.25.4</root.aws-sdk.version>
+    <root.slf4j.version>2.0.9</root.slf4j.version>
   </properties>
 
   <build>
@@ -29,13 +31,42 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>3.1.0</version>
-        <configuration>
-          <mainClass>com.newtowndata.infrastructure.InfrastructureApp</mainClass>
-        </configuration>
+        <version>3.1.1</version>
+        <executions>
+          <execution>
+            <id>cdk</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.newtowndata.infrastructure.InfrastructureApp</mainClass>
+            </configuration>
+          </execution>
+          <execution>
+            <id>clean-up</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.newtowndata.infrastructure.CleanUpAwsAssets</mainClass>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>bom</artifactId>
+        <version>${root.aws-sdk.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <!-- AWS Cloud Development Kit -->
@@ -49,6 +80,75 @@
       <groupId>software.constructs</groupId>
       <artifactId>constructs</artifactId>
       <version>${constructs.version}</version>
+    </dependency>
+    
+    <!-- AWS SDK for Clean Up -->
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>url-connection-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>ssooidc</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>netty-nio-client</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>apache-client</artifactId>
+        </exclusion>
+      </exclusions>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>sso</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>netty-nio-client</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>apache-client</artifactId>
+        </exclusion>
+      </exclusions>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>sts</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>netty-nio-client</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>apache-client</artifactId>
+        </exclusion>
+      </exclusions>      
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>s3</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>netty-nio-client</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>apache-client</artifactId>
+        </exclusion>
+      </exclusions>      
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${root.slf4j.version}</version>
     </dependency>
 
     <dependency>

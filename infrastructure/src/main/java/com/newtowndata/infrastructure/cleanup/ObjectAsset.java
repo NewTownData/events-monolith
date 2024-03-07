@@ -11,18 +11,8 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.newtowndata.events.core;
+package com.newtowndata.infrastructure.cleanup;
 
-/**
- * Generic application constants.
- */
-public final class ApplicationConstants {
-
-  public static final String STATE_START = "start";
-  public static final String STATE_END = "end";
-
-  public static final String ATTRIBUTE_WAIT_TIME_IN_SEC = "wait_time_in_sec";
-
-  private ApplicationConstants() {}
+public record ObjectAsset(String bucketName, String objectKey) {
 
 }

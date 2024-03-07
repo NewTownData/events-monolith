@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Voyta Krizek, https://github.com/NewTownData
+ * Copyright 2023-2024 Voyta Krizek, https://github.com/NewTownData
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -17,7 +17,6 @@ import com.newtowndata.infrastructure.utils.StackUtils;
 import java.util.Map;
 import software.amazon.awscdk.RemovalPolicy;
 import software.amazon.awscdk.Stack;
-import software.amazon.awscdk.StackProps;
 import software.amazon.awscdk.services.dynamodb.Attribute;
 import software.amazon.awscdk.services.dynamodb.AttributeType;
 import software.amazon.awscdk.services.dynamodb.BillingMode;
@@ -40,9 +39,8 @@ import software.constructs.Construct;
 
 public class EventsMonolithStack extends Stack {
 
-  public EventsMonolithStack(final Construct scope, final String id, final StackProps props,
-      final EventsMonolithStackProps stackProps) {
-    super(scope, id, props);
+  public EventsMonolithStack(final Construct scope, final EventsMonolithStackProps stackProps) {
+    super(scope, stackProps.stackPrefix() + "-events-monolith-demo", stackProps.props());
 
     Queue deadLetterQueue = Queue.Builder.create(this, "DeadLetterQueue")
         .queueName(stackProps.stackPrefix() + "-events-monolith-dlq").enforceSsl(true)
