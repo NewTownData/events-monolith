@@ -26,8 +26,6 @@ import software.amazon.awscdk.cxapi.CloudAssembly;
 
 public class InfrastructureApp {
 
-  public static final String APPLICATION_NAME = "events-monolith";
-
   public static void main(final String[] args) {
     createApp(null);
   }
