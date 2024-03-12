@@ -105,8 +105,6 @@ public class CleanUpAwsAssets {
 
     Map<String, FileAsset> files = assetManifest.getContents().getFiles();
     files.values().forEach(file -> {
-      boolean isStack = file.getSource().getPath().endsWith(".template.json");
-
       file.getDestinations().values().forEach(destination -> {
         String bucketName = fixResource(destination.getBucketName(), account, region);
 
@@ -116,12 +114,10 @@ public class CleanUpAwsAssets {
             fixResource(destination.getAssumeRoleArn(), account, region)
         ));
 
-        if (!isStack) {
-          context.addObjectAsset(new ObjectAsset(
-              bucketName,
-              destination.getObjectKey()
-          ));
-        }
+        context.addObjectAsset(new ObjectAsset(
+            bucketName,
+            destination.getObjectKey()
+        ));
       });
     });
   }
